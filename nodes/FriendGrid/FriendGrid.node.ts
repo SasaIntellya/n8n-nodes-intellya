@@ -1,19 +1,11 @@
-// import {
-//     NodeExecuteFunctions,
-// } from 'n8n-core';
 
 import {
     IExecuteFunctions,
     IDataObject,
     INodeExecutionData,
     INodeType,
-    INodeTypeDescription,
-    NodeConnectionType
+    INodeTypeDescription
 } from 'n8n-workflow';
-
-// import {
-//     OptionsWithUri,
-// } from 'request';
 
 export class FriendGrid implements INodeType {
     description: INodeTypeDescription = {
@@ -26,8 +18,8 @@ export class FriendGrid implements INodeType {
         defaults: {
             name: 'FriendGrid',
         },
-        inputs: [NodeConnectionType.Main],
-        outputs: [NodeConnectionType.Main],
+        inputs: ['main'],
+        outputs: ['main'],
         credentials: [
             {
                 name: 'friendGridApi',
