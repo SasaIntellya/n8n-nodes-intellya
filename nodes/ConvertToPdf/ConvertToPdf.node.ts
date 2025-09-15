@@ -18,23 +18,7 @@ export class ConvertToPdf implements INodeType {
         },
         inputs: ['main'],
         outputs: ['main'],
-        properties: [
-            {
-                displayName: 'Resource',
-                name: 'resource',
-                type: 'options',
-                options: [
-                    {
-                        name: 'Contact',
-                        value: 'contact',
-                    },
-                ],
-                default: 'contact',
-                noDataExpression: true,
-                required: true,
-                description: 'Convert to PDF',
-            }
-        ],
+        properties: [],
     };
 
     async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
