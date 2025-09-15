@@ -1,11 +1,9 @@
 
-import {
-    IExecuteFunctions,
-    IDataObject,
-    INodeExecutionData,
-    INodeType,
-    INodeTypeDescription
-} from 'n8n-workflow';
+import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
+import { exec } from "child_process";
+import * as fs from "fs/promises";
+import { promisify } from "util";
+import * as path from "path";
 
 export class ConvertToPdf implements INodeType {
     description: INodeTypeDescription = {
@@ -116,50 +114,60 @@ export class ConvertToPdf implements INodeType {
             },
         ],
     };
-    // The execute method will go here
+
     async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
-        // Handle data coming from previous nodes
-        const items = this.getInputData();
-        // let responseData;
-        const returnData = [];
-        const resource = this.getNodeParameter('resource', 0) as string;
-        const operation = this.getNodeParameter('operation', 0) as string;
+        // PRIVATE METHODS
 
-        // For each item, make an API call to create a contact
+        let execAsync = promisify(exec);
+
+        let convertDocxToPdf = async (data: Buffer, fileName: string) => {
+            let importedPath = './imported';
+            const importedFilePath = path.join(importedPath, fileName);
+            await fs.mkdir(importedPath, { recursive: true });
+            await fs.writeFile(importedFilePath, data);
+            var result = await executeConvertCommand(importedFilePath);
+            await fs.unlink(importedFilePath);
+            return result;
+        };
+
+        let executeConvertCommand = async (importedPath: string): Promise<Buffer> => {
+            const outputPath = "./converted";
+            const outputFilePath = path.join(outputPath, path.basename(importedPath, ".docx") + ".pdf");
+            const command = `soffice --headless --convert-to pdf --outdir "${outputPath}" "${importedPath}"`;
+            await fs.mkdir(outputPath, { recursive: true });
+            await execAsync(command);
+            var outputFile = fs.readFile(outputFilePath);
+            await fs.unlink(outputFilePath);
+            return outputFile;
+        }
+
+        // EXECUTE METHOD
+
+        const items = this.getInputData(); // all incoming items
+        const returnData: any[] = [];
+
         for (let i = 0; i < items.length; i++) {
-            if (resource === 'contact') {
-                if (operation === 'create') {
-                    // Get email input
-                    const email = this.getNodeParameter('email', i) as string;
-                    // Get additional fields input
-                    const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-                    const data: IDataObject = {
-                        email,
-                    };
+            const item = items[i];
 
-                    Object.assign(data, additionalFields);
+            // Check if binary data exists
+            if (item.binary) {
+                // For example, if previous node output a file in "data" property
+                const binaryData = item.binary["data"];
 
-                    // Make HTTP request according to https://sendgrid.com/docs/api-reference/
-                    // const options: OptionsWithUri = {
-                    // 	headers: {
-                    // 		'Accept': 'application/json',
-                    // 	},
-                    // 	method: 'PUT',
-                    // 	body: {
-                    // 		contacts: [
-                    // 			data,
-                    // 		],
-                    // 	},
-                    // 	uri: `https://api.sendgrid.com/v3/marketing/contacts`,
-                    // 	json: true,
-                    // };
-                    // responseData = await this.helpers.requestWithAuthentication.call(this, 'friendGridApi', options);
-                    // returnData.push(responseData);
-                    returnData.push({ sasa: 'sasaa' });
+                if (binaryData) {
+                    const fileName = binaryData.fileName;
+                    const mimeType = binaryData.mimeType;
+
+                    const buffer = Buffer.from((binaryData.data, binaryData.dataEncoding || 'base64') as BufferEncoding);
+                    let convertedFile = await convertDocxToPdf(buffer, fileName?.toString() ?? '');
+                    returnData.push(convertedFile);
+                    console.log(`Got file: ${fileName} (${mimeType}), size: ${convertedFile.length}`);
+                    console.log(`Got file: ${fileName} (${mimeType}), size: ${buffer.length}`);
                 }
             }
+
+            returnData.push(item);
         }
-        // Map data to n8n data structure
-        return [this.helpers.returnJsonArray(returnData)];
+        return [returnData];
     }
 }
