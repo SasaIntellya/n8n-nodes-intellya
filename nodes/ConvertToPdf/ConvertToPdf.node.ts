@@ -135,8 +135,6 @@ export class ConvertToPdf implements INodeType {
         let executeConvertCommand = async (importedPath: string): Promise<Buffer> => {
             const outputPath = "./converted";
             const outputFilePath = path.join(outputPath, path.basename(importedPath, ".docx") + ".pdf");
-            console.log(outputFilePath);
-            
             const command = `soffice --headless --convert-to pdf --outdir "${outputPath}" "${importedPath}"`;
             await fs.mkdir(outputPath, { recursive: true });
             await execAsync(command);
@@ -148,7 +146,7 @@ export class ConvertToPdf implements INodeType {
         // EXECUTE METHOD
 
         const items = this.getInputData(); // all incoming items
-        const returnData: any[] = [];
+        const returnData: INodeExecutionData[] = [];
         console.log('1111111');
 
         for (let i = 0; i < items.length; i++) {
@@ -160,7 +158,7 @@ export class ConvertToPdf implements INodeType {
                 console.log('333333');
 
                 // For example, if previous node output a file in "data" property
-                const binaryData = item.binary['file'];                
+                const binaryData = item.binary['file'];
 
                 if (binaryData) {
                     console.log('444444');
@@ -170,8 +168,13 @@ export class ConvertToPdf implements INodeType {
 
                     const buffer = Buffer.from((binaryData.data, binaryData.dataEncoding || 'base64') as BufferEncoding);
                     let convertedFile = await convertDocxToPdf(buffer, fileName?.toString() ?? '');
-                    console.log(convertedFile);
-                    returnData.push(convertedFile);
+                    const returnItem = {
+                        json: {},
+                        binary: {
+                            data: await this.helpers.prepareBinaryData(convertedFile, fileName?.replace(/\.docx$/, '.pdf')),
+                        },
+                    };
+                    returnData.push(returnItem);
                 }
             }
         }
