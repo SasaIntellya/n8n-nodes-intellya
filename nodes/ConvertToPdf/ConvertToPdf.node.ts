@@ -12,18 +12,12 @@ export class ConvertToPdf implements INodeType {
         icon: 'file:convertToPdf.svg',
         group: ['transform'],
         version: 1,
-        description: 'Consume SendGrid API',
+        description: 'ConvertToPdf',
         defaults: {
             name: 'ConvertToPdf',
         },
         inputs: ['main'],
         outputs: ['main'],
-        credentials: [
-            {
-                name: 'friendGridApi',
-                required: true,
-            },
-        ],
         properties: [
             {
                 displayName: 'Resource',
@@ -38,86 +32,12 @@ export class ConvertToPdf implements INodeType {
                 default: 'contact',
                 noDataExpression: true,
                 required: true,
-                description: 'Create a new contact',
-            },
-            {
-                displayName: 'Operation',
-                name: 'operation',
-                type: 'options',
-                displayOptions: {
-                    show: {
-                        resource: [
-                            'contact',
-                        ],
-                    },
-                },
-                options: [
-                    {
-                        name: 'Create',
-                        value: 'create',
-                        description: 'Create a contact',
-                        action: 'Create a contact',
-                    },
-                ],
-                default: 'create',
-                noDataExpression: true,
-            },
-            {
-                displayName: 'Email',
-                name: 'email',
-                type: 'string',
-                required: true,
-                displayOptions: {
-                    show: {
-                        operation: [
-                            'create',
-                        ],
-                        resource: [
-                            'contact',
-                        ],
-                    },
-                },
-                default: '',
-                placeholder: 'name@email.com',
-                description: 'Primary email for the contact',
-            },
-            {
-                displayName: 'Additional Fields',
-                name: 'additionalFields',
-                type: 'collection',
-                placeholder: 'Add Field',
-                default: {},
-                displayOptions: {
-                    show: {
-                        resource: [
-                            'contact',
-                        ],
-                        operation: [
-                            'create',
-                        ],
-                    },
-                },
-                options: [
-                    {
-                        displayName: 'First Name',
-                        name: 'firstName',
-                        type: 'string',
-                        default: '',
-                    },
-                    {
-                        displayName: 'Last Name',
-                        name: 'lastName',
-                        type: 'string',
-                        default: '',
-                    },
-                ],
-            },
+                description: 'Convert to PDF',
+            }
         ],
     };
 
     async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
-        console.log('EXECUTE METHOD');
-
         // PRIVATE METHODS
 
         let execAsync = promisify(exec);
