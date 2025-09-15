@@ -158,8 +158,8 @@ export class ConvertToPdf implements INodeType {
                 console.log('333333');
 
                 // For example, if previous node output a file in "data" property
-                const binaryData = item.binary["data"];
-                console.log(item.binary);
+                const binaryData = item.binary?.data;
+                console.log(item.binary.data);
                 
 
                 if (binaryData) {
