@@ -9,7 +9,7 @@ export class ConvertToPdf implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'ConvertToPdf',
         name: 'doctopdf',
-        icon: 'file:convertToPdf.svg',
+        icon: 'file:doctopdf.svg',
         group: ['transform'],
         version: 1,
         description: 'ConvertToPdf',
