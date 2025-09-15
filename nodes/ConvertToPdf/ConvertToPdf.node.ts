@@ -147,25 +147,15 @@ export class ConvertToPdf implements INodeType {
 
         const items = this.getInputData(); // all incoming items
         const returnData: INodeExecutionData[] = [];
-        console.log('1111111');
 
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
-            console.log('222222');
-
-            // Check if binary data exists
             if (item.binary) {
-                console.log('333333');
-
-                // For example, if previous node output a file in "data" property
                 const binaryData = item.binary['file'];
+                console.log(binaryData);
 
                 if (binaryData) {
-                    console.log('444444');
-
                     const fileName = binaryData.fileName;
-                    const mimeType = binaryData.mimeType;
-
                     const buffer = Buffer.from((binaryData.data, binaryData.dataEncoding || 'base64') as BufferEncoding);
                     let convertedFile = await convertDocxToPdf(buffer, fileName?.toString() ?? '');
                     const returnItem = {
