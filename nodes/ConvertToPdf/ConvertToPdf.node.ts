@@ -116,6 +116,8 @@ export class ConvertToPdf implements INodeType {
     };
 
     async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
+        console.log('EXECUTE METHOD');
+
         // PRIVATE METHODS
 
         let execAsync = promisify(exec);
@@ -145,16 +147,22 @@ export class ConvertToPdf implements INodeType {
 
         const items = this.getInputData(); // all incoming items
         const returnData: any[] = [];
+        console.log('1111111');
 
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
+            console.log('222222');
 
             // Check if binary data exists
             if (item.binary) {
+                console.log('333333');
+
                 // For example, if previous node output a file in "data" property
                 const binaryData = item.binary["data"];
 
                 if (binaryData) {
+                    console.log('444444');
+
                     const fileName = binaryData.fileName;
                     const mimeType = binaryData.mimeType;
 
@@ -165,8 +173,6 @@ export class ConvertToPdf implements INodeType {
                     console.log(`Got file: ${fileName} (${mimeType}), size: ${buffer.length}`);
                 }
             }
-
-            returnData.push(item);
         }
         return [returnData];
     }
