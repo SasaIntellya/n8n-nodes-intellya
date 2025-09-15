@@ -8,7 +8,7 @@ import * as path from "path";
 export class ConvertToPdf implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'ConvertToPdf',
-        name: 'convertToPdf',
+        name: 'doctopdf',
         icon: 'file:convertToPdf.svg',
         group: ['transform'],
         version: 1,
@@ -49,7 +49,7 @@ export class ConvertToPdf implements INodeType {
 
         // EXECUTE METHOD
 
-        const items = this.getInputData(); // all incoming items
+        const items = this.getInputData();
         const returnData: INodeExecutionData[] = [];
 
         for (let i = 0; i < items.length; i++) {
@@ -58,7 +58,6 @@ export class ConvertToPdf implements INodeType {
                 const binaryData = item.binary['file'];
                 if (binaryData) {
                     const fileName = binaryData.fileName;
-                    // const buffer = Buffer.from((binaryData.data, 'base64') as BufferEncoding);
                     const buffer = Buffer.from(binaryData.data, 'base64');
                     let convertedFile = await convertDocxToPdf(buffer, fileName?.toString() ?? '');
                     const returnItem = {
