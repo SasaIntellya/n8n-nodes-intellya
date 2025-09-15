@@ -168,9 +168,8 @@ export class ConvertToPdf implements INodeType {
 
                     const buffer = Buffer.from((binaryData.data, binaryData.dataEncoding || 'base64') as BufferEncoding);
                     let convertedFile = await convertDocxToPdf(buffer, fileName?.toString() ?? '');
+                    console.log(convertedFile);
                     returnData.push(convertedFile);
-                    console.log(`Got file: ${fileName} (${mimeType}), size: ${convertedFile.length}`);
-                    console.log(`Got file: ${fileName} (${mimeType}), size: ${buffer.length}`);
                 }
             }
         }
