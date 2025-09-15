@@ -135,6 +135,8 @@ export class ConvertToPdf implements INodeType {
         let executeConvertCommand = async (importedPath: string): Promise<Buffer> => {
             const outputPath = "./converted";
             const outputFilePath = path.join(outputPath, path.basename(importedPath, ".docx") + ".pdf");
+            console.log(outputFilePath);
+            
             const command = `soffice --headless --convert-to pdf --outdir "${outputPath}" "${importedPath}"`;
             await fs.mkdir(outputPath, { recursive: true });
             await execAsync(command);
