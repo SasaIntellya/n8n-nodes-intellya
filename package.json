@@ -36,7 +36,8 @@
       "dist/credentials/FriendGridApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/FriendGrid/FriendGrid.node.js"
+      "dist/nodes/FriendGrid/FriendGrid.node.js",
+      "dist/nodes/ConvertToPdf/ConvertToPdf.node.js"
     ]
   },
   "devDependencies": {
@@ -51,6 +52,7 @@
     "n8n-workflow": "*"
   },
   "dependencies": {
+    "minio": "^8.0.5",
     "n8n-core": "^1.14.1"
   }
 }

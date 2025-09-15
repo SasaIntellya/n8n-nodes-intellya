@@ -7,16 +7,16 @@ import {
     INodeTypeDescription
 } from 'n8n-workflow';
 
-export class FriendGrid implements INodeType {
+export class ConvertToPdf implements INodeType {
     description: INodeTypeDescription = {
-        displayName: 'FriendGrid',
-        name: 'friendGrid',
-        icon: 'file:friendGrid.svg',
+        displayName: 'ConvertToPdf',
+        name: 'convertToPdf',
+        icon: 'file:convertToPdf.svg',
         group: ['transform'],
         version: 1,
         description: 'Consume SendGrid API',
         defaults: {
-            name: 'FriendGrid',
+            name: 'ConvertToPdf',
         },
         inputs: ['main'],
         outputs: ['main'],
