@@ -29,7 +29,9 @@ export class BinaryFromNode implements INodeType {
 
     async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
         // EXECUTE
-
+        console.log(this.getInputSourceData());
+        console.log(this.getInputSourceData(0));
+        
         const items = this.getInputData();
         // const sourceBinary = await this.helpers.getBinaryDataBuffer(0, 'data');
         // console.log(sourceBinary);
