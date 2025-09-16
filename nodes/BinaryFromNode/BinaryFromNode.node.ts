@@ -31,17 +31,16 @@ export class BinaryFromNode implements INodeType {
         // EXECUTE
 
         const items = this.getInputData();
+        console.log(this.getInputData());
+        console.log(this.getInputData(0));
+        console.log(this.getInputData(1));
+        
         const returnData: INodeExecutionData[] = [];
         const nodeNameForBinaryData = this.getNodeParameter('NodeName', 0) as string;
-        console.log('line 36   ' + nodeNameForBinaryData);
-        console.log(items);
         
         for (let i = 0; i < items.length; i++) {
             // const sourceBinary = await this.helpers.getBinaryDataBuffer(i, nodeNameForBinaryData);
-            // console.log(sourceBinary);
             const item = items[i];
-            console.log(item);
-            
             if (item.binary) {
                 const binaryData = item.binary['file'];
                 if (binaryData) {
