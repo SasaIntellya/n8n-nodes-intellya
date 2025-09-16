@@ -60,11 +60,14 @@ export class PdfToImages implements INodeType {
                             },
                         };
                         console.log(5555555);
+                        console.log(returnItem);
                         returnData.push(returnItem);
                     });
                 }
             }
         }
+        console.log(666666);
+        console.log(returnData);
         return [returnData];
     }
 }
