@@ -36,7 +36,6 @@
       "dist/credentials/FriendGridApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/FriendGrid/FriendGrid.node.js",
       "dist/nodes/ConvertToPdf/ConvertToPdf.node.js",
       "dist/nodes/PdfToImages/PdfToImages.node.js"
     ]
