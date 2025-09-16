@@ -35,7 +35,7 @@ export class BinaryFromNode implements INodeType {
         console.log(sourceBinary);
         
         const returnData: INodeExecutionData[] = [];
-        const nodeNameForBinaryData = this.getNodeParameter('NodeName', 0) as string;
+        // const nodeNameForBinaryData = this.getNodeParameter('NodeName', 0) as string;
         
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
