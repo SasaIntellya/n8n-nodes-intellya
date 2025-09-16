@@ -1,5 +1,5 @@
 
-import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
+import { IBinaryData, IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { exec } from "child_process";
 import * as fs from "fs/promises";
 import { promisify } from "util";
@@ -26,19 +26,19 @@ export class ConvertToPdf implements INodeType {
 
         let execAsync = promisify(exec);
 
-        let convertDocxToPdf = async (data: Buffer, fileName: string) => {
+        let convertDocxToPdf = async (data: Buffer, file: IBinaryData) => {
             let importedPath = './imported';
-            const importedFilePath = path.join(importedPath, fileName);
+            const importedFilePath = path.join(importedPath, file.fileName!);
             await fs.mkdir(importedPath, { recursive: true });
             await fs.writeFile(importedFilePath, data);
-            var result = await executeConvertCommand(importedFilePath);
+            var result = await executeConvertCommand(importedFilePath, file);
             await fs.unlink(importedFilePath);
             return result;
         };
 
-        let executeConvertCommand = async (importedPath: string): Promise<Buffer> => {
+        let executeConvertCommand = async (importedPath: string, file: IBinaryData): Promise<Buffer> => {
             const outputPath = "./converted";
-            const outputFilePath = path.join(outputPath, path.basename(importedPath, ".docx") + ".pdf");
+            const outputFilePath = path.join(outputPath, path.basename(importedPath, file.fileExtension) + ".pdf");
             const command = `soffice --headless --convert-to pdf --outdir "${outputPath}" "${importedPath}"`;
             await fs.mkdir(outputPath, { recursive: true });
             await execAsync(command);
@@ -57,13 +57,12 @@ export class ConvertToPdf implements INodeType {
             if (item.binary) {
                 const binaryData = item.binary['file'];
                 if (binaryData) {
-                    const fileName = binaryData.fileName;
                     const buffer = Buffer.from(binaryData.data, 'base64');
-                    let convertedFile = await convertDocxToPdf(buffer, fileName?.toString() ?? '');
+                    let convertedFile = await convertDocxToPdf(buffer, binaryData);
                     const returnItem = {
                         json: {},
                         binary: {
-                            data: await this.helpers.prepareBinaryData(convertedFile, fileName?.replace(/\.docx$/, '.pdf')),
+                            data: await this.helpers.prepareBinaryData(convertedFile, binaryData.fileName?.replace(/\.[^.]+$/, '.pdf')),
                         },
                     };
                     returnData.push(returnItem);

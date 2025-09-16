@@ -37,6 +37,7 @@
     ],
     "nodes": [
       "dist/nodes/ConvertToPdf/ConvertToPdf.node.js",
+      "dist/nodes/BinaryFromNode/BinaryFromNode.node.js",
       "dist/nodes/PdfToImages/PdfToImages.node.js"
     ]
   },
