@@ -53,13 +53,21 @@ export class ConvertToPdf implements INodeType {
         const returnData: INodeExecutionData[] = [];
 
         for (let i = 0; i < items.length; i++) {
+            console.log(11111111);
+
             const item = items[i];
             if (item.binary) {
+                console.log(2222222);
+
                 const binaryData = item.binary['file'];
                 if (binaryData) {
+                    console.log(3333333);
+
                     const fileName = binaryData.fileName;
                     const buffer = Buffer.from(binaryData.data, 'base64');
                     let convertedFile = await convertDocxToPdf(buffer, fileName?.toString() ?? '');
+                    console.log(4444444);
+
                     const returnItem = {
                         json: {},
                         binary: {
@@ -67,6 +75,8 @@ export class ConvertToPdf implements INodeType {
                         },
                     };
                     returnData.push(returnItem);
+                    console.log(5555555);
+
                 }
             }
         }
