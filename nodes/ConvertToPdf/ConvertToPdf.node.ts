@@ -47,7 +47,7 @@ export class ConvertToPdf implements INodeType {
             return outputFile;
         }
 
-        // EXECUTE METHOD
+        // EXECUTE
 
         const items = this.getInputData();
         const returnData: INodeExecutionData[] = [];
