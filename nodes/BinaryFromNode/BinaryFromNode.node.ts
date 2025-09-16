@@ -20,16 +20,6 @@ export class BinaryFromNode implements INodeType {
                 name: 'NodeName',
                 type: 'string',
                 required: true,
-                displayOptions: {
-                    show: {
-                        operation: [
-                            'create',
-                        ],
-                        resource: [
-                            'contact',
-                        ],
-                    },
-                },
                 default: '',
                 placeholder: 'Node name',
                 description: 'Node name',
