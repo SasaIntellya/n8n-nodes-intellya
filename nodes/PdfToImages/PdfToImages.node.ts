@@ -40,12 +40,16 @@ export class PdfToImages implements INodeType {
 
         const items = this.getInputData();
         const returnData: INodeExecutionData[] = [];
+        console.log(111111);
 
         for (let i = 0; i < items.length; i++) {
+            console.log(222222);
             const item = items[i];
             if (item.binary) {
+                console.log(333333);
                 const binaryData = item.binary['data'];
                 if (binaryData) {
+                    console.log(44444444);
                     const buffer = Buffer.from(binaryData.data, 'base64');
                     let images = await pdfToImages(buffer);
                     images.forEach(async img => {
@@ -55,9 +59,9 @@ export class PdfToImages implements INodeType {
                                 data: await this.helpers.prepareBinaryData(img),
                             },
                         };
+                        console.log(5555555);
                         returnData.push(returnItem);
                     });
-
                 }
             }
         }
