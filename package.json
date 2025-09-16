@@ -53,7 +53,6 @@
   },
   "dependencies": {
     "force": "^0.0.3",
-    "minio": "^8.0.5",
     "n8n-core": "^1.14.1",
     "pdf-to-img": "^5.0.0"
   }

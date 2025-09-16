@@ -8,7 +8,7 @@ import * as path from "path";
 export class ConvertToPdf implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'ConvertToPdf',
-        name: 'doctopdf',
+        name: 'ConvertToPdf',
         icon: 'file:doctopdf.svg',
         group: ['transform'],
         version: 1,

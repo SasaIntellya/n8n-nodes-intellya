@@ -6,7 +6,7 @@ import * as path from "path";
 export class PdfToImages implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'PdfToImages',
-        name: 'doctopdf',
+        name: 'PdfToImages',
         icon: 'file:pdftojpg.svg',
         group: ['transform'],
         version: 1,
