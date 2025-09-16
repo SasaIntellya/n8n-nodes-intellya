@@ -52,7 +52,7 @@ export class PdfToImages implements INodeType {
                     console.log(44444444);
                     const buffer = Buffer.from(binaryData.data, 'base64');
                     let images = await pdfToImages(buffer);
-                    images.forEach(async img => {
+                    for await (const img of images) {
                         const returnItem = {
                             json: {},
                             binary: {
@@ -62,7 +62,7 @@ export class PdfToImages implements INodeType {
                         console.log(5555555);
                         console.log(returnItem);
                         returnData.push(returnItem);
-                    });
+                    }
                 }
             }
         }
