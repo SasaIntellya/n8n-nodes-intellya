@@ -37,7 +37,7 @@ export class MarkdownToChunks implements INodeType {
 
         const outputData = this.getInputData();
 
-        console.log(outputData[0].json);
+        console.log(outputData);
     
 
 
