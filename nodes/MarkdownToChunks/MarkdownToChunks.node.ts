@@ -27,15 +27,8 @@ export class MarkdownToChunks implements INodeType {
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
             if (item.json) {
-                // var content = '<!--PAGE:'+ i + 1 + '-->' + item.json['content']?.toString();
                 let content = `<!--PAGE:${i + 1}-->${item.json['content']?.toString()}`;
-                console.log(i);
-
-                console.log(content);
-
                 const chunks = await parser.process(content ?? '', i + "example.md");
-                console.log(chunks);
-
                 for await (const c of chunks) {
                     const returnItem = {
                         json: { chunk: c }
@@ -44,8 +37,6 @@ export class MarkdownToChunks implements INodeType {
                 }
             }
         }
-        console.log(returnData);
-
         return [returnData];
     }
 }
