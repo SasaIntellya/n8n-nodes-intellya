@@ -27,7 +27,7 @@ export class MarkdownToChunks implements INodeType {
             const item = items[i];
             if (item.json) {
                 let content = `<!--PAGE:${i + 1}-->${item.json['text']?.toString()}`;
-                const chunks = await parser.process(content ?? '', i + (item?.json['documentName']?.toString() ?? ''));
+                const chunks = await parser.process(content ?? '', (item?.json['documentName']?.toString() ?? ''));
                 for await (const c of chunks) {
                     const returnItem = {
                         json: { chunk: c }
