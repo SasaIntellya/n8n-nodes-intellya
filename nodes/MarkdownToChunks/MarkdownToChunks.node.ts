@@ -20,9 +20,6 @@ export class MarkdownToChunks implements INodeType {
 
     async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
         // EXECUTE
-        var ttt = this.getWorkflowStaticData("Insert document to DB");
-        console.log(ttt);
-        
         const parser = new MarkdownParserService();
         const returnData: INodeExecutionData[] = [];
         let items = this.getInputData();
