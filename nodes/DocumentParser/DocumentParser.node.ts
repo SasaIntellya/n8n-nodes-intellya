@@ -5,7 +5,7 @@ export class DocumentParser implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'DocumentParser',
         name: 'DocumentParser',
-        icon: 'file:doctopdf.svg',
+        icon: 'file:DocumentParser.svg',
         group: ['transform'],
         version: 1,
         description: 'DocumentParser',

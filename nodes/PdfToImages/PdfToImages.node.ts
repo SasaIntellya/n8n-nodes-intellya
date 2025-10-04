@@ -7,7 +7,7 @@ export class PdfToImages implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'PdfToImages',
         name: 'PdfToImages',
-        icon: 'file:pdftojpg.svg',
+        icon: 'file:PdfToJpg.svg',
         group: ['transform'],
         version: 1,
         description: 'PdfToImages',

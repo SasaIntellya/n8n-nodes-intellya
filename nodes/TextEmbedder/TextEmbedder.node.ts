@@ -5,7 +5,7 @@ export class TextEmbedder implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'TextEmbedder',
         name: 'TextEmbedder',
-        icon: 'file:doctopdf.svg',
+        icon: 'file:TextEmbedder.svg',
         group: ['transform'],
         version: 1,
         description: 'TextEmbedder',
