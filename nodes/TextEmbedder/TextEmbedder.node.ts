@@ -93,7 +93,7 @@ export class TextEmbedder implements INodeType {
             {
                 displayName: 'Text',
                 name: 'text',
-                type: 'number',
+                type: 'string',
                 default: '',
                 placeholder: 'Text',
                 description: 'Text',
