@@ -1,5 +1,6 @@
 
 import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
+import { EmbeddingRequest, EmbeddingResponse } from './Model/OpenAI';
 
 export class TextEmbedder implements INodeType {
     description: INodeTypeDescription = {
@@ -26,7 +27,7 @@ export class TextEmbedder implements INodeType {
                     },
                     {
                         name: 'Custom',
-                        value: 'custom',
+                        value: 'Custom',
                     },
                 ],
                 default: 'OpenAI',
@@ -77,7 +78,7 @@ export class TextEmbedder implements INodeType {
                 displayName: 'Dimensions',
                 name: 'dimensions',
                 type: 'number',
-                default: '',
+                default: 1536,
                 placeholder: 'Dimensions',
                 description: 'Dimensions',
             },
@@ -100,15 +101,41 @@ export class TextEmbedder implements INodeType {
         ],
     };
 
-
     async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
         // PRIVATE METHODS
 
+        let openAIEmbedding = async (): Promise<EmbeddingResponse> => {
+            var body = new EmbeddingRequest(
+                this.getNodeParameter('model', 0) as string,
+                this.getNodeParameter('dimensions', 0) as number,
+                this.getNodeParameter('input', 0) as string
+            );
+            var data = await this.helpers.httpRequest({
+                method: 'POST',
+                url: 'https://api.openai.com/v1/embeddings',
+                body: body,
+                headers: {
+                    'Authorization': `Bearer ${this.getNodeParameter('token', 0) as string}`,
+                },
+                json: true
+            }) as EmbeddingResponse;
+            return data;
+        }
+
+        // let customEmbedding = async (): Promise<any> => {
+
+        // };
+
         // EXECUTE
 
-        // const items = this.getInputData();
         const returnData: INodeExecutionData[] = [];
-
+        let embedderType = this.getNodeParameter('embedderType', 0) as string;
+        if (embedderType == 'OpenAI') {
+            let data = await openAIEmbedding();
+            returnData.push({
+                json: data as {},
+            });
+        }
         return [returnData];
     }
 }
