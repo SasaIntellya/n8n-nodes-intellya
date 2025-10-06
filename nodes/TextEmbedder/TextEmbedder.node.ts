@@ -134,6 +134,7 @@ export class TextEmbedder implements INodeType {
             let data = await openAIEmbedding();
             returnData.push({
                 json: data as {},
+                pairedItem: { item: 0 }
             });
         }
         return [returnData];

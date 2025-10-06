@@ -142,9 +142,10 @@ export class DocumentParser implements INodeType {
         let parserService = this.getNodeParameter('parserService', 0) as string;
         if (parserService == 'docling') {
             let data = await parse();
-            data?.forEach(d => {
+            data?.forEach((d, i) => {
                 returnData.push({
                     json: d as any,
+                    pairedItem: { item: i }
                 });
             });
         }
