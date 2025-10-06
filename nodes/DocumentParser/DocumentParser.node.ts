@@ -144,8 +144,7 @@ export class DocumentParser implements INodeType {
             let data = await parse();
             data?.forEach((d, i) => {
                 returnData.push({
-                    json: d as any,
-                    pairedItem: { item: i }
+                    json: d as any
                 });
             });
         }

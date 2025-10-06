@@ -133,8 +133,7 @@ export class TextEmbedder implements INodeType {
         if (embedderType == 'OpenAI') {
             let data = await openAIEmbedding();
             returnData.push({
-                json: data as {},
-                pairedItem: { item: 0 }
+                json: data as {}
             });
         }
         return [returnData];
