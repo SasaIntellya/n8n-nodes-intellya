@@ -60,9 +60,6 @@ export class DocumentParser implements INodeType {
                         parserService: ['docling'],
                     },
                 },
-                typeOptions: {
-                    password: true,
-                },
                 description: 'Parser url',
             },
             {
@@ -74,9 +71,6 @@ export class DocumentParser implements INodeType {
                     show: {
                         parserService: ['docling'],
                     },
-                },
-                typeOptions: {
-                    password: true,
                 },
                 description: 'Document id',
             },
@@ -90,9 +84,6 @@ export class DocumentParser implements INodeType {
                         parserService: ['docling'],
                     },
                 },
-                typeOptions: {
-                    password: true,
-                },
                 description: 'Document name',
             },
             {
@@ -105,9 +96,6 @@ export class DocumentParser implements INodeType {
                         parserService: ['docling'],
                     },
                 },
-                typeOptions: {
-                    password: true,
-                },
                 description: 'Bucket name',
             },
             {
@@ -119,9 +107,6 @@ export class DocumentParser implements INodeType {
                     show: {
                         parserService: ['docling'],
                     },
-                },
-                typeOptions: {
-                    password: true,
                 },
                 description: 'Tenant code',
             },
