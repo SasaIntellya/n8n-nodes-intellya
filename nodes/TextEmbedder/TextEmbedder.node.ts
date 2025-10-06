@@ -83,20 +83,12 @@ export class TextEmbedder implements INodeType {
                 description: 'Dimensions',
             },
             {
-                displayName: 'Additional prompt',
-                name: 'additionalPrompt',
-                type: 'string',
-                default: '',
-                placeholder: 'Additional prompt',
-                description: 'Additional prompt',
-            },
-            {
                 displayName: 'Input',
                 name: 'input',
                 type: 'string',
                 default: '',
-                placeholder: 'Text',
-                description: 'Text',
+                placeholder: 'Input',
+                description: 'Input',
             }
         ],
     };
