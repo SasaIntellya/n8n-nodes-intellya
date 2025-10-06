@@ -91,8 +91,8 @@ export class TextEmbedder implements INodeType {
                 description: 'Additional prompt',
             },
             {
-                displayName: 'Text',
-                name: 'text',
+                displayName: 'Input',
+                name: 'input',
                 type: 'string',
                 default: '',
                 placeholder: 'Text',
