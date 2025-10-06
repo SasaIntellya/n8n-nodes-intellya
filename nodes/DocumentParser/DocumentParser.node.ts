@@ -143,9 +143,9 @@ export class DocumentParser implements INodeType {
         if (parserService == 'docling') {
             let data = await parse();
             returnData.push({
-                json: data as {},
+                json: data as any,
             });
         }
-        return this.prepareOutputData(returnData);
+        return [returnData];
     }
 }
