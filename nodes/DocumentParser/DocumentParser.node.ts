@@ -138,14 +138,14 @@ export class DocumentParser implements INodeType {
 
         // EXECUTE
 
-        const returnData: INodeExecutionData[] = [];
+        const returnData: INodeExecutionData[][] = [];
         let parserService = this.getNodeParameter('parserService', 0) as string;
         if (parserService == 'docling') {
             let data = await parse();
-            returnData.push({
+            returnData.push([{
                 json: data as any,
-            });
+            }]);
         }
-        return [returnData];
+        return returnData;
     }
 }
