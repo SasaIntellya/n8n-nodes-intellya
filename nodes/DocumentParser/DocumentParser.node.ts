@@ -146,6 +146,6 @@ export class DocumentParser implements INodeType {
                 json: data as {},
             });
         }
-        return [returnData];
+        return this.prepareOutputData(returnData);
     }
 }
