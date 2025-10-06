@@ -6,7 +6,7 @@ export class MarkdownToChunks implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'MarkdownToChunks',
         name: 'MarkdownToChunks',
-        icon: 'file:Splitter.svg',
+        icon: 'file:MarkdownToChunks.svg',
         group: ['transform'],
         version: 1,
         description: 'MarkdownToChunks',
