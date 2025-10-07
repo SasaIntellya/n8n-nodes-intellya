@@ -80,15 +80,12 @@ export class DocumentParser implements INodeType {
         // EXECUTE
 
         const returnData: INodeExecutionData[] = [];
-        let parserService = this.getNodeParameter('parserService', 0) as string;
-        if (parserService == 'docling') {
-            let data = await parse();
-            data?.forEach((d, i) => {
-                returnData.push({
-                    json: d as any
-                });
+        let data = await parse();
+        data?.forEach((d, i) => {
+            returnData.push({
+                json: d as any
             });
-        }
+        });
         return [returnData];
     }
 }
