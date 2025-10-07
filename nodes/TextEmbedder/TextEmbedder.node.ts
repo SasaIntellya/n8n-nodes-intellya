@@ -75,6 +75,18 @@ export class TextEmbedder implements INodeType {
                 description: 'Choose model',
             },
             {
+                displayName: 'Url',
+                name: 'url',
+                type: 'string',
+                displayOptions: {
+                    show: {
+                        embedderType: ['Custom'],
+                    },
+                },
+                default: '',
+                description: 'ParsEmbedder url',
+            },
+            {
                 displayName: 'Dimensions',
                 name: 'dimensions',
                 type: 'number',

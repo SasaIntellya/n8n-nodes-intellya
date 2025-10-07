@@ -17,49 +17,10 @@ export class DocumentParser implements INodeType {
         outputs: ['main'],
         properties: [
             {
-                displayName: 'Parser service',
-                name: 'parserService',
-                type: 'options',
-                options: [
-                    {
-                        name: 'Docling',
-                        value: 'docling',
-                    },
-                    {
-                        name: 'Custom',
-                        value: 'custom',
-                    },
-                ],
-                default: 'docling',
-                description: 'Choose parser',
-            },
-            {
-                displayName: 'Chunking method',
-                name: 'chunkingMethod',
-                type: 'options',
-                options: [
-                    {
-                        name: 'Unstructured',
-                        value: 'unstructured',
-                    },
-                    {
-                        name: 'Custom',
-                        value: 'custom',
-                    },
-                ],
-                default: 'unstructured',
-                description: 'Choose chunking method',
-            },
-            {
                 displayName: 'Url',
                 name: 'url',
                 type: 'string',
                 default: '',
-                displayOptions: {
-                    show: {
-                        parserService: ['docling'],
-                    },
-                },
                 description: 'Parser url',
             },
             {
@@ -67,11 +28,6 @@ export class DocumentParser implements INodeType {
                 name: 'id',
                 type: 'string',
                 default: '',
-                displayOptions: {
-                    show: {
-                        parserService: ['docling'],
-                    },
-                },
                 description: 'Document id',
             },
             {
@@ -79,11 +35,6 @@ export class DocumentParser implements INodeType {
                 name: 'name',
                 type: 'string',
                 default: '',
-                displayOptions: {
-                    show: {
-                        parserService: ['docling'],
-                    },
-                },
                 description: 'Document name',
             },
             {
@@ -91,11 +42,6 @@ export class DocumentParser implements INodeType {
                 name: 'bucketName',
                 type: 'string',
                 default: '',
-                displayOptions: {
-                    show: {
-                        parserService: ['docling'],
-                    },
-                },
                 description: 'Bucket name',
             },
             {
@@ -103,11 +49,6 @@ export class DocumentParser implements INodeType {
                 name: 'tenantCode',
                 type: 'string',
                 default: '',
-                displayOptions: {
-                    show: {
-                        parserService: ['docling'],
-                    },
-                },
                 description: 'Tenant code',
             },
         ],
