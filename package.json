@@ -40,7 +40,7 @@
       "dist/nodes/ConvertToPdf/ConvertToPdf.node.js",
       "dist/nodes/TextEmbedder/TextEmbedder.node.js",
       "dist/nodes/DocumentParser/DocumentParser.node.js",
-      "dist/nodes/PdfToImages/PdfToImages.node.js"      
+      "dist/nodes/PdfToImages/PdfToImages.node.js"
     ]
   },
   "devDependencies": {
@@ -55,8 +55,10 @@
     "n8n-workflow": "*"
   },
   "dependencies": {
+    "docxtemplater": "^3.66.6",
     "force": "^0.0.3",
     "n8n-core": "^1.14.1",
-    "pdf-to-img": "^5.0.0"
+    "pdf-to-img": "^5.0.0",
+    "pizzip": "^3.2.0"
   }
 }
