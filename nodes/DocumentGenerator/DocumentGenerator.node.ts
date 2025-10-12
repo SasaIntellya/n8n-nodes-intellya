@@ -1,7 +1,6 @@
 
 import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
 import Docxtemplater from "docxtemplater";
-import * as path from "path";
 import PizZip from "pizzip";
 import fs from "fs";
 
