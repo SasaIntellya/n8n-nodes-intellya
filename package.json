@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "docxtemplater": "^3.66.6",
+    "docxtemplater-image-module-free": "^1.1.1",
     "force": "^0.0.3",
     "n8n-core": "^1.14.1",
     "pdf-to-img": "^5.0.0",
