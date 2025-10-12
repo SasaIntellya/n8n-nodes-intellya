@@ -1,8 +1,9 @@
 
 import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
-import fs from "fs";
-import PizZip from "pizzip";
 import Docxtemplater from "docxtemplater";
+import * as path from "path";
+import PizZip from "pizzip";
+import fs from "fs";
 
 export class DocumentGenerator implements INodeType {
     description: INodeTypeDescription = {
@@ -47,9 +48,7 @@ export class DocumentGenerator implements INodeType {
             };
             const ImageModule = require('docxtemplater-image-module-free');
             const imageModule = new ImageModule(options);
-            // const templatesPath = './nodes/ConvertToPdf/Imported/';
-            // const importedFilePath = path.join(importedPath, file.fileName!);
-            const template = fs.readFileSync("./nodes/DocumentGenerator/Templates/template.docx", "binary");
+            const template = fs.readFileSync(path.join(templatesPath, 'Template.docx'), "binary");
             const templater = new Docxtemplater(new PizZip(template), {
                 modules: [imageModule],
                 // delimiters: { start: "{", end: "}" }
@@ -61,13 +60,14 @@ export class DocumentGenerator implements INodeType {
 
         // EXECUTE
 
+        const templatesPath = './nodes/DocumentGenerator/Templates/';
         const returnData: INodeExecutionData[] = [];
-        let buff = fs.readFileSync('./nodes/DocumentGenerator/Templates/slika.png');
+        let buff = fs.readFileSync(path.join(templatesPath, 'slika.png'));
         let data = {
             ime: 'sasa',
             prezime: 'glogovac',
             image: 'data:image/png;base64,' + buff.toString('base64'),
-            imagee: './nodes/DocumentGenerator/Templates/slika.jpg'
+            imagee: path.join(templatesPath, 'slika.jpg')
         };
         let document = await generateDoc(data);
         const returnItem = {
