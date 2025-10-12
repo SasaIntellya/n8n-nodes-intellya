@@ -62,6 +62,8 @@ export class DocumentGenerator implements INodeType {
 
         const templatesPath = './nodes/DocumentGenerator/Templates/';
         const returnData: INodeExecutionData[] = [];
+        console.log(path.join(templatesPath, 'slika.png'));
+        
         let buff = fs.readFileSync(path.join(templatesPath, 'slika.png'));
         let data = {
             ime: 'sasa',

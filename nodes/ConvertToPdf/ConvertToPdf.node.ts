@@ -29,6 +29,8 @@ export class ConvertToPdf implements INodeType {
         let convertDocxToPdf = async (data: Buffer, file: IBinaryData): Promise<Buffer> => {
             let importedPath = './nodes/ConvertToPdf/Imported/';
             const importedFilePath = path.join(importedPath, file.fileName!);
+            console.log(importedFilePath);
+            
             await fs.mkdir(importedPath, { recursive: true });
             await fs.writeFile(importedFilePath, data);
             var result = await executeConvertCommand(importedFilePath, file);
