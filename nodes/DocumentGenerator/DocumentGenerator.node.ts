@@ -47,7 +47,7 @@ export class DocumentGenerator implements INodeType {
             };
             const ImageModule = require('docxtemplater-image-module-free');
             const imageModule = new ImageModule(options);
-            const template = fs.readFileSync("./src/controllers/Templates/template.docx", "binary");
+            const template = fs.readFileSync("./src/nodes/DocumentGenerator/Templates/template.docx", "binary");
             const templater = new Docxtemplater(new PizZip(template), {
                 modules: [imageModule],
                 // delimiters: { start: "{", end: "}" }
@@ -60,12 +60,12 @@ export class DocumentGenerator implements INodeType {
         // EXECUTE
 
         const returnData: INodeExecutionData[] = [];
-        let buff = fs.readFileSync('./src/controllers/Templates/slika.png');
+        let buff = fs.readFileSync('./src/nodes/DocumentGenerator/Templates/slika.png');
         let data = {
             ime: 'sasa',
             prezime: 'glogovac',
             image: 'data:image/png;base64,' + buff.toString('base64'),
-            imagee: './src/controllers/Templates/slika.jpg'
+            imagee: './src/nodes/DocumentGenerator/Templates/slika.jpg'
         };
         let document = await generateDoc(data);
         const returnItem = {
