@@ -71,7 +71,7 @@ export class DocumentGenerator implements INodeType {
         const returnItem = {
             json: {},
             binary: {
-                data: await this.helpers.prepareBinaryData(document),
+                data: await this.helpers.prepareBinaryData(document, 'result.docx'),
             }
         };
         returnData.push(returnItem);
