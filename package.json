@@ -36,12 +36,13 @@
       "dist/credentials/FriendGridApi.credentials.js"
     ],
     "nodes": [
+      "dist/nodes/DocumentGenerator/DocumentGenerator.node.js",
       "dist/nodes/MarkdownToChunks/MarkdownToChunks.node.js",
+      "dist/nodes/DocumentParser/DocumentParser.node.js",
       "dist/nodes/ConvertToPdf/ConvertToPdf.node.js",
       "dist/nodes/TextEmbedder/TextEmbedder.node.js",
-      "dist/nodes/DocumentParser/DocumentParser.node.js",
-      "dist/nodes/DocumentGenerator/DocumentGenerator.node.js",
-      "dist/nodes/PdfToImages/PdfToImages.node.js"
+      "dist/nodes/PdfToImages/PdfToImages.node.js",
+      "dist/nodes/VLM/VLM.node.js"
     ]
   },
   "devDependencies": {
