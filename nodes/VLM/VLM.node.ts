@@ -130,24 +130,26 @@ export class VLM implements INodeType {
 
         let openAIVLM = async (imageBase64: string): Promise<OpenAIResponse> => {
             var messages = new Array<OpenAIMessage>();
-            messages.push(new OpenAIMessage('system', SYSTEM_PROMPT));
-            messages.push(new OpenAIMessage('user', [
-                { "type": "text", "text": "HEADINGS_POLICY:\n" + HEADINGS_POLICY },
-                { "type": "text", "text": "PREVIOUS_HEADINGS:\n" + this.getNodeParameter('previousHeadings', 0) as string },
-                { "type": "text", "text": "Tail of previous page:\n" + this.getNodeParameter('previousPageTail', 0) as string },
-                { "type": "text", "text": "Parse THIS page to Markdown using only #, ##, ### headings." },
-                { "type": "image_url", "image_url": { "url": `data:image/png;base64,${imageBase64}`} }
-            ]));
-            messages.push(new OpenAIMessage('system', 'Parse this document page.'));
+            messages.push({ role: 'system', content: SYSTEM_PROMPT });
+            messages.push({
+                role: 'user', content: [
+                    { "type": "text", "text": "HEADINGS_POLICY:\n" + HEADINGS_POLICY },
+                    { "type": "text", "text": "PREVIOUS_HEADINGS:\n" + this.getNodeParameter('previousHeadings', 0) as string },
+                    { "type": "text", "text": "Tail of previous page:\n" + this.getNodeParameter('previousPageTail', 0) as string },
+                    { "type": "text", "text": "Parse THIS page to Markdown using only #, ##, ### headings." },
+                    { "type": "image_url", "image_url": { "url": `data:image/png;base64,${imageBase64}` } }
+                ]
+            });
+            messages.push({ role: 'system', content: 'Parse this document page.' });
             var body = new OpenAIRequest(
                 this.getNodeParameter('model', 0) as string,
                 this.getNodeParameter('maxTokens', 0) as number,
                 messages
             );
             console.log(this.getNodeParameter('token', 0));
-            
+
             console.log(body);
-            
+
             var data = await this.helpers.httpRequest({
                 method: 'POST',
                 url: 'https://api.openai.com/v1/chat/completions',
