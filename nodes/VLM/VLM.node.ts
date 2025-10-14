@@ -79,12 +79,7 @@ export class VLM implements INodeType {
                 type: 'string',
                 default: '',
                 placeholder: 'Previous headings',
-                description: 'Previous headings',
-                displayOptions: {
-                    show: {
-                        embedderType: ['OpenAI'],
-                    },
-                }
+                description: 'Previous headings'
             },
             {
                 displayName: 'Tail of previous page',
@@ -92,12 +87,7 @@ export class VLM implements INodeType {
                 type: 'string',
                 default: '',
                 placeholder: 'Tail of previous page',
-                description: 'Tail of previous page',
-                displayOptions: {
-                    show: {
-                        embedderType: ['OpenAI'],
-                    },
-                }
+                description: 'Tail of previous page'
             },
             {
                 displayName: 'Url',
@@ -138,16 +128,13 @@ export class VLM implements INodeType {
         - If the page continues the last section, continue prose without repeating the heading.
         - Only add a new heading if the source clearly shows one.`
 
-        const previous_headings_text = '';
-        const previous_text = '';
-
         let openAIVLM = async (imageBase64: string): Promise<OpenAIResponse> => {
             var messages = new Array<OpenAIMessage>();
             messages.push(new OpenAIMessage('system', SYSTEM_PROMPT));
             messages.push(new OpenAIMessage('user', [
                 { "type": "text", "text": "HEADINGS_POLICY:\n" + HEADINGS_POLICY },
-                { "type": "text", "text": "PREVIOUS_HEADINGS:\n" + previous_headings_text },
-                { "type": "text", "text": "Tail of previous page:\n" + previous_text },
+                { "type": "text", "text": "PREVIOUS_HEADINGS:\n" + this.getNodeParameter('previousHeadings', 0) as string },
+                { "type": "text", "text": "Tail of previous page:\n" + this.getNodeParameter('previousPageTail', 0) as string },
                 { "type": "text", "text": "Parse THIS page to Markdown using only #, ##, ### headings." },
                 { "type": "image_url", "image_url": { "url": `data:image/png;base64,${imageBase64}`} }
             ]));
