@@ -137,7 +137,7 @@ export class VLM implements INodeType {
                     { "type": "text", "text": "PREVIOUS_HEADINGS:\n" + this.getNodeParameter('previousHeadings', 0) as string },
                     { "type": "text", "text": "Tail of previous page:\n" + this.getNodeParameter('previousPageTail', 0) as string },
                     { "type": "text", "text": "Parse THIS page to Markdown using only #, ##, ### headings." },
-                    { "type": "image_url", "image_url": { "url": `data:image/png;base64,${imageBase64}` } }
+                    // { "type": "image_url", "image_url": { "url": `data:image/png;base64,${imageBase64}` } }
                 ])
             });
             messages.push({ role: 'system', content: 'Parse this document page.' });
