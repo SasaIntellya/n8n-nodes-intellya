@@ -144,6 +144,10 @@ export class VLM implements INodeType {
                 this.getNodeParameter('maxTokens', 0) as number,
                 messages
             );
+            console.log(this.getNodeParameter('token', 0));
+            
+            console.log(body);
+            
             var data = await this.helpers.httpRequest({
                 method: 'POST',
                 url: 'https://api.openai.com/v1/chat/completions',
