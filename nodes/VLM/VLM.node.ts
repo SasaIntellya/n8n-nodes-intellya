@@ -40,7 +40,7 @@ export class VLM implements INodeType {
                 default: '',
                 displayOptions: {
                     show: {
-                        embedderType: ['OpenAI'],
+                        vlmType: ['OpenAI'],
                     },
                 },
                 typeOptions: {
@@ -56,7 +56,7 @@ export class VLM implements INodeType {
                 description: 'Model',
                 displayOptions: {
                     show: {
-                        embedderType: ['OpenAI'],
+                        vlmType: ['OpenAI'],
                     },
                 }
             },
@@ -69,7 +69,7 @@ export class VLM implements INodeType {
                 description: 'Max tokens',
                 displayOptions: {
                     show: {
-                        embedderType: ['OpenAI'],
+                        vlmType: ['OpenAI'],
                     },
                 }
             },
@@ -95,7 +95,7 @@ export class VLM implements INodeType {
                 type: 'string',
                 displayOptions: {
                     show: {
-                        embedderType: ['Custom'],
+                        vlmType: ['Custom'],
                     },
                 },
                 default: '',
