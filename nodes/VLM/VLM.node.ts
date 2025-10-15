@@ -6,7 +6,7 @@ export class VLM implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'VLM',
         name: 'VLM',
-        icon: 'file:VLM.svg',
+        icon: 'file:vlm_.svg',
         group: ['transform'],
         version: 1,
         description: 'VLM',
