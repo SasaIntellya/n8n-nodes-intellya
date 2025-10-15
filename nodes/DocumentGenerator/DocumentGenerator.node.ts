@@ -72,7 +72,7 @@ export class DocumentGenerator implements INodeType {
                 }
             }
         });
-        let document = await generateDoc(input.json);
+        let document = await generateDoc(data);
         const returnItem = {
             json: data,
             binary: {
