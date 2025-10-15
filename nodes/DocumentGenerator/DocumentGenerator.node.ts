@@ -8,7 +8,7 @@ export class DocumentGenerator implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'DocumentGenerator',
         name: 'DocumentGenerator',
-        icon: 'file:DocumentGenerator.svg',
+        icon: 'file:DG.svg',
         group: ['transform'],
         version: 1,
         description: 'DocumentGenerator',
@@ -47,7 +47,7 @@ export class DocumentGenerator implements INodeType {
             };
             const ImageModule = require('docxtemplater-image-module-free');
             const imageModule = new ImageModule(options);
-            const template = inputData[0]?.binary!['data']?.data;
+            const template = input.binary!['data']?.data;
             const templater = new Docxtemplater(new PizZip(Buffer.from(template, 'base64')), {
                 modules: [imageModule],
                 // delimiters: { start: "{", end: "}" }
@@ -59,15 +59,18 @@ export class DocumentGenerator implements INodeType {
 
         // EXECUTE
 
-        const inputData = this.getInputData();
-        const image = inputData[1]?.binary!['data']?.data;
+        const input = this.getInputData()[0];
         const returnData: INodeExecutionData[] = [];
-        let data = {
-            ime: 'sasa',
-            prezime: 'glogovac',
-            image: 'data:image/png;base64,' + image,
-        };
-        let document = await generateDoc(data);
+        // let data = {
+        //     ime: 'sasa',
+        //     prezime: 'glogovac',
+        //     image: 'data:image/png;base64,' + image,
+        // };
+        let inputData = input.json;
+        Object.keys(inputData).forEach(k => {
+            console.log(typeof inputData[k]);            
+        });
+        let document = await generateDoc(inputData);
         const returnItem = {
             json: {},
             binary: {
