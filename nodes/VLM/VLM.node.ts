@@ -1,6 +1,6 @@
 
 import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { OpenAIMessage, OpenAIRequest, OpenAIResponse } from './Model/OpenAI';
+import { OpenAIRequest, OpenAIResponse } from './Model/OpenAI';
 
 export class VLM implements INodeType {
     description: INodeTypeDescription = {
@@ -129,7 +129,7 @@ export class VLM implements INodeType {
         - Only add a new heading if the source clearly shows one.`
 
         let openAIVLM = async (imageBase64: string): Promise<OpenAIResponse> => {
-            var messages = new Array<OpenAIMessage>();
+            var messages = new Array<{}>();
             messages.push({ role: 'system', content: SYSTEM_PROMPT });
             messages.push({
                 role: 'user', content: JSON.stringify([
@@ -146,10 +146,6 @@ export class VLM implements INodeType {
                 this.getNodeParameter('maxTokens', 0) as number,
                 messages
             );
-            console.log(this.getNodeParameter('token', 0));
-
-            console.log(body);
-
             var data = await this.helpers.httpRequest({
                 method: 'POST',
                 url: 'https://api.openai.com/v1/chat/completions',
@@ -158,7 +154,7 @@ export class VLM implements INodeType {
                     'Authorization': `Bearer ${this.getNodeParameter('token', 0) as string}`,
                 },
                 json: true
-            }) as OpenAIResponse;
+            }) as OpenAIResponse;            
             return data;
         }
 
