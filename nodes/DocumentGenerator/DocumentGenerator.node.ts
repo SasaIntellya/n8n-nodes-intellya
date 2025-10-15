@@ -1,5 +1,5 @@
 
-import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
+import { IDataObject, IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
 import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import fs from "fs";
@@ -68,8 +68,14 @@ export class DocumentGenerator implements INodeType {
         // };
         let inputData = input.json;
         Object.keys(inputData).forEach(k => {
-            console.log(typeof inputData[k]);            
+            if (typeof inputData[k] == 'object') {
+                let objectData = inputData[k] as IDataObject;
+                if (objectData['fileType'] == 'image') {
+                    inputData[k] = `data:${objectData['mimeType']};base64,${objectData['data']}`
+                }
+            }
         });
+        console.log(inputData);        
         let document = await generateDoc(inputData);
         const returnItem = {
             json: {},
