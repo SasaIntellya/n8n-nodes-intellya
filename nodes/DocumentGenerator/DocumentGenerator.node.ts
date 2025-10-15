@@ -61,18 +61,20 @@ export class DocumentGenerator implements INodeType {
 
         const input = this.getInputData()[0];
         const returnData: INodeExecutionData[] = [];
-        let inputData = input.json;
-        Object.keys(inputData).forEach(k => {
-            if (typeof inputData[k] == 'object') {
-                let objectData = inputData[k] as IDataObject;
+        let data = {} as IDataObject;
+        Object.keys(input.json).forEach(k => {
+            if (['string', 'number'].includes(typeof input.json[k])) {
+                data[k] = input.json[k];
+            } else if (typeof input.json[k] == 'object') {
+                let objectData = input.json[k] as IDataObject;
                 if (objectData['fileType'] == 'image') {
-                    inputData[k] = `data:${objectData['mimeType']};base64,${objectData['data']}`
+                    data[k] = `data:${objectData['mimeType']};base64,${objectData['data']}`
                 }
             }
         });
-        let document = await generateDoc(inputData);
+        let document = await generateDoc(input.json);
         const returnItem = {
-            json: inputData,
+            json: data,
             binary: {
                 data: await this.helpers.prepareBinaryData(document, 'result.docx'),
             }
