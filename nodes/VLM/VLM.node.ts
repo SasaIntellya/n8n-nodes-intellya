@@ -132,13 +132,13 @@ export class VLM implements INodeType {
             var messages = new Array<{}>();
             messages.push({ role: 'system', content: SYSTEM_PROMPT });
             messages.push({
-                role: 'user', content: JSON.stringify([
+                role: 'user', content: [
                     { "type": "text", "text": "HEADINGS_POLICY:\n" + HEADINGS_POLICY },
                     { "type": "text", "text": "PREVIOUS_HEADINGS:\n" + this.getNodeParameter('previousHeadings', 0) as string },
                     { "type": "text", "text": "Tail of previous page:\n" + this.getNodeParameter('previousPageTail', 0) as string },
                     { "type": "text", "text": "Parse THIS page to Markdown using only #, ##, ### headings." },
                     { "type": "image_url", "image_url": { "url": `data:image/png;base64,${imageBase64}` } }
-                ])
+                ]
             });
             messages.push({ role: 'system', content: 'Parse this document page.' });
             var body = new OpenAIRequest(
@@ -154,7 +154,7 @@ export class VLM implements INodeType {
                     'Authorization': `Bearer ${this.getNodeParameter('token', 0) as string}`,
                 },
                 json: true
-            }) as OpenAIResponse;            
+            }) as OpenAIResponse;
             return data;
         }
 
