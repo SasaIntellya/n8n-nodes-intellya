@@ -61,11 +61,6 @@ export class DocumentGenerator implements INodeType {
 
         const input = this.getInputData()[0];
         const returnData: INodeExecutionData[] = [];
-        // let data = {
-        //     ime: 'sasa',
-        //     prezime: 'glogovac',
-        //     image: 'data:image/png;base64,' + image,
-        // };
         let inputData = input.json;
         Object.keys(inputData).forEach(k => {
             if (typeof inputData[k] == 'object') {
@@ -75,7 +70,6 @@ export class DocumentGenerator implements INodeType {
                 }
             }
         });
-        console.log(inputData);        
         let document = await generateDoc(inputData);
         const returnItem = {
             json: inputData,
