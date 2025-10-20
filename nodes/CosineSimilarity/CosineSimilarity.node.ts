@@ -101,8 +101,14 @@ export class CosineSimilarity implements INodeType {
                     }
                 }
             };
-
-            let url = `https://${this.getNodeParameter('username', 0) as string}:${this.getNodeParameter('password', 0) as string}@${this.getNodeParameter('baseUrl', 0) as string}/${this.getNodeParameter('index', 0) as string}/_search`;
+            let url = `https://
+            ${this.getNodeParameter('username', 0) as string}
+            :
+            ${this.getNodeParameter('password', 0) as string}
+            @${this.getNodeParameter('baseUrl', 0) as string}
+            /
+            ${this.getNodeParameter('index', 0) as string}
+            /_search`;
             let data = await this.helpers.httpRequest({
                 method: 'POST',
                 url: url,
