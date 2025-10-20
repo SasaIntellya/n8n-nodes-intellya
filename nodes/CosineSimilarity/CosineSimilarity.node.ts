@@ -92,7 +92,7 @@ export class CosineSimilarity implements INodeType {
                                     script: {
                                         source: 'cosineSimilarity(params.queryVector, ParagraphVector) + 1.0',
                                         params: {
-                                            queryVector: [this.getNodeParameter('vectors', 0)]
+                                            queryVector: this.getNodeParameter('vectors', 0)
                                         }
                                     }
                                 }
@@ -103,10 +103,8 @@ export class CosineSimilarity implements INodeType {
             };
 
             let url = `https://${this.getNodeParameter('username', 0) as string}:${this.getNodeParameter('password', 0) as string}@${this.getNodeParameter('baseUrl', 0) as string}/${this.getNodeParameter('index', 0) as string}/_search`;
-            console.log(url);
-            console.log(this.getNodeParameter('vectors', 0));
-            console.log(body);
-            
+            console.log(JSON.stringify(body));
+
             let data = await this.helpers.httpRequest({
                 method: 'POST',
                 url: url,
