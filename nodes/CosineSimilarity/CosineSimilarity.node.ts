@@ -92,7 +92,7 @@ export class CosineSimilarity implements INodeType {
                                     script: {
                                         source: 'cosineSimilarity(params.queryVector, ParagraphVector) + 1.0',
                                         params: {
-                                            queryVector: [this.getNodeParameter('vectors', 0) as number[]]
+                                            queryVector: [this.getNodeParameter('vectors', 0)]
                                         }
                                     }
                                 }
