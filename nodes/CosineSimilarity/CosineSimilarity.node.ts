@@ -46,8 +46,21 @@ export class CosineSimilarity implements INodeType {
                 default: '',
                 description: 'Elastic index',
             },
-
-        ],
+            {
+                displayName: 'Channel id',
+                name: 'channelId',
+                type: 'string',
+                default: '',
+                description: 'Channel id for filter',
+            },
+            {
+                displayName: 'Vectors',
+                name: 'vectors',
+                type: 'json',
+                default: '',
+                description: 'Vectors',
+            }
+        ]
     };
 
     async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
@@ -79,7 +92,7 @@ export class CosineSimilarity implements INodeType {
                                     script: {
                                         source: 'cosineSimilarity(params.queryVector, ParagraphVector) + 1.0',
                                         params: {
-                                            queryVector: [this.getNodeParameter('channelId', 0) as number[]]
+                                            queryVector: [this.getNodeParameter('vectors', 0) as number[]]
                                         }
                                     }
                                 }
