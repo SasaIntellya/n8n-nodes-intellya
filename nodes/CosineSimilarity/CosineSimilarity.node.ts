@@ -67,6 +67,15 @@ export class CosineSimilarity implements INodeType {
         // PRIVATE METHODS
 
         let elasticCosineSimilarity = async (): Promise<any> => {
+            let url = `https://
+            ${this.getNodeParameter('username', 0) as string}
+            :
+            ${this.getNodeParameter('password', 0) as string}
+            @
+            ${this.getNodeParameter('baseUrl', 0) as string}
+            /
+            ${this.getNodeParameter('index', 0) as string}
+            /_search`;
             var body = {
                 size: 10,
                 query: {
@@ -101,15 +110,6 @@ export class CosineSimilarity implements INodeType {
                     }
                 }
             };
-            let url = `https://
-            ${this.getNodeParameter('username', 0) as string}
-            :
-            ${this.getNodeParameter('password', 0) as string}
-            @
-            ${this.getNodeParameter('baseUrl', 0) as string}
-            /
-            ${this.getNodeParameter('index', 0) as string}
-            /_search`;
             let data = await this.helpers.httpRequest({
                 method: 'POST',
                 url: url,
