@@ -1,5 +1,5 @@
 
-import { IDataObject, IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
+import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
 
 export class CosineSimilarity implements INodeType {
     description: INodeTypeDescription = {
