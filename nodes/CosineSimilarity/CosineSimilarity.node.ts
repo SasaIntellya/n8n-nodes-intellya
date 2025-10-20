@@ -105,7 +105,8 @@ export class CosineSimilarity implements INodeType {
             ${this.getNodeParameter('username', 0) as string}
             :
             ${this.getNodeParameter('password', 0) as string}
-            @${this.getNodeParameter('baseUrl', 0) as string}
+            @
+            ${this.getNodeParameter('baseUrl', 0) as string}
             /
             ${this.getNodeParameter('index', 0) as string}
             /_search`;
