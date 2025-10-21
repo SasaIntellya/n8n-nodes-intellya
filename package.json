@@ -1,6 +1,6 @@
 {
   "name": "@sasaintellya/n8n-nodes-intellya",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Intellya",
   "keywords": [
     "n8n-community-node-package"
@@ -33,7 +33,7 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/Test.credentials.js"
+      "dist/credentials/TestApi.credentials.js"
     ],
     "nodes": [
       "dist/nodes/DocumentGenerator/DocumentGenerator.node.js",
