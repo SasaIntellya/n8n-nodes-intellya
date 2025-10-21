@@ -1,14 +1,14 @@
 {
-  "name": "n8n-nodes-intellya",
-  "version": "0.1.0",
-  "description": "",
+  "name": "@sasaintellya/n8n-nodes-intellya",
+  "version": "0.1.1",
+  "description": "Intellya",
   "keywords": [
     "n8n-community-node-package"
   ],
   "license": "MIT",
   "homepage": "",
   "author": {
-    "name": "",
+    "name": "Intellya",
     "email": "sasaintellya@gmail.com"
   },
   "repository": {
@@ -33,17 +33,17 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/FriendGridApi.credentials.js"
+      "dist/credentials/Test.credentials.ts"
     ],
     "nodes": [
       "dist/nodes/DocumentGenerator/DocumentGenerator.node.js",
       "dist/nodes/MarkdownToChunks/MarkdownToChunks.node.js",
-      "dist/nodes/CosineSimilarity/CosineSimilarity.node.js",      
+      "dist/nodes/CosineSimilarity/CosineSimilarity.node.js",
       "dist/nodes/DocumentParser/DocumentParser.node.js",
       "dist/nodes/ConvertToPdf/ConvertToPdf.node.js",
       "dist/nodes/TextEmbedder/TextEmbedder.node.js",
       "dist/nodes/PdfToImages/PdfToImages.node.js",
-      "dist/nodes/VLM/VLM.node.js"
+      "dist/nodes/VLM/Vlm.node.js"
     ]
   },
   "devDependencies": {
@@ -64,5 +64,8 @@
     "n8n-core": "^1.14.1",
     "pdf-to-img": "^5.0.0",
     "pizzip": "^3.2.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }

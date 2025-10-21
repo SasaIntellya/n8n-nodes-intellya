@@ -5,7 +5,7 @@ import { EmbeddingRequest, EmbeddingResponse } from './Model/OpenAI';
 export class TextEmbedder implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'TextEmbedder',
-        name: 'TextEmbedder',
+        name: 'textEmbedder',
         icon: 'file:TextEmbedder.svg',
         group: ['transform'],
         version: 1,
@@ -27,7 +27,7 @@ export class TextEmbedder implements INodeType {
             //     description: 'Choose option from API',
             // },
             {
-                displayName: 'Embedder type',
+                displayName: 'Embedder Type',
                 name: 'embedderType',
                 type: 'options',
                 options: [
@@ -94,7 +94,7 @@ export class TextEmbedder implements INodeType {
                     },
                 },
                 default: '',
-                description: 'ParsEmbedder url',
+                description: 'ParsEmbedder URL',
             },
             {
                 displayName: 'Dimensions',
@@ -102,7 +102,7 @@ export class TextEmbedder implements INodeType {
                 type: 'number',
                 default: 1536,
                 placeholder: 'Dimensions',
-                description: 'Dimensions',
+
             },
             {
                 displayName: 'Input',
@@ -110,7 +110,7 @@ export class TextEmbedder implements INodeType {
                 type: 'string',
                 default: '',
                 placeholder: 'Input',
-                description: 'Input',
+
             }
         ],
     };

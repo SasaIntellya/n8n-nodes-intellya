@@ -5,7 +5,7 @@ import { OpenAIRequest, OpenAIResponse } from './Model/OpenAI';
 export class VLM implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'VLM',
-        name: 'VLM',
+        name: 'vlm',
         icon: 'file:VLM.svg',
         group: ['transform'],
         version: 1,
@@ -17,7 +17,7 @@ export class VLM implements INodeType {
         outputs: ['main'],
         properties: [
             {
-                displayName: 'VLM type',
+                displayName: 'VLM Type',
                 name: 'vlmType',
                 type: 'options',
                 options: [
@@ -53,7 +53,7 @@ export class VLM implements INodeType {
                 name: 'model',
                 type: 'string',
                 default: 'gpt-4.1',
-                description: 'Model',
+
                 displayOptions: {
                     show: {
                         vlmType: ['OpenAI'],
@@ -61,12 +61,12 @@ export class VLM implements INodeType {
                 }
             },
             {
-                displayName: 'Max tokens',
+                displayName: 'Max Tokens',
                 name: 'maxTokens',
                 type: 'number',
                 default: 5000,
                 placeholder: 'Max tokens',
-                description: 'Max tokens',
+
                 displayOptions: {
                     show: {
                         vlmType: ['OpenAI'],
@@ -74,20 +74,18 @@ export class VLM implements INodeType {
                 }
             },
             {
-                displayName: 'Previous headings',
+                displayName: 'Previous Headings',
                 name: 'previousHeadings',
                 type: 'string',
                 default: '',
                 placeholder: 'Previous headings',
-                description: 'Previous headings'
             },
             {
-                displayName: 'Tail of previous page',
+                displayName: 'Tail of Previous Page',
                 name: 'previousPageTail',
                 type: 'string',
                 default: '',
                 placeholder: 'Tail of previous page',
-                description: 'Tail of previous page'
             },
             {
                 displayName: 'Url',
@@ -99,7 +97,7 @@ export class VLM implements INodeType {
                     },
                 },
                 default: '',
-                description: 'ParsEmbedder url',
+                description: 'ParsEmbedder URL',
             }
         ],
     };

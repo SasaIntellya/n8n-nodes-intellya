@@ -5,7 +5,7 @@ import { MarkdownParserService } from "./MarkdownToChunks";
 export class MarkdownToChunks implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'MarkdownToChunks',
-        name: 'MarkdownToChunks',
+        name: 'markdownToChunks',
         icon: 'file:MarkdownToChunks.svg',
         group: ['transform'],
         version: 1,

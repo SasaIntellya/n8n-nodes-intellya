@@ -4,7 +4,7 @@ import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription 
 export class PdfToImages implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'PdfToImages',
-        name: 'PdfToImages',
+        name: 'pdfToImages',
         icon: 'file:PdfToImages.svg',
         group: ['transform'],
         version: 1,

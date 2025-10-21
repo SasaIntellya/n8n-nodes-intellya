@@ -4,7 +4,7 @@ import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription 
 export class CosineSimilarity implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'CosineSimilarity',
-        name: 'CosineSimilarity',
+        name: 'cosineSimilarity',
         icon: 'file:CosineSimilarity.svg',
         group: ['transform'],
         version: 1,
@@ -16,11 +16,11 @@ export class CosineSimilarity implements INodeType {
         outputs: ['main'],
         properties: [
             {
-                displayName: 'Base url',
+                displayName: 'Base Url',
                 name: 'baseUrl',
                 type: 'string',
                 default: '',
-                description: 'Elastic base url (without https://)',
+                description: 'Elastic base URL (without https://)',
             },
             {
                 displayName: 'Username',
@@ -47,18 +47,18 @@ export class CosineSimilarity implements INodeType {
                 description: 'Elastic index',
             },
             {
-                displayName: 'Channel id',
+                displayName: 'Channel ID',
                 name: 'channelId',
                 type: 'string',
                 default: '',
-                description: 'Channel id for filter',
+                description: 'Channel ID for filter',
             },
             {
                 displayName: 'Vectors',
                 name: 'vectors',
                 type: 'json',
                 default: '',
-                description: 'Vectors',
+
             }
         ]
     };

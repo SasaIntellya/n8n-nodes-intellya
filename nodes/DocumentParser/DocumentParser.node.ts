@@ -5,7 +5,7 @@ import { ParserRequest, ParserResponse } from './Model/Parser';
 export class DocumentParser implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'DocumentParser',
-        name: 'DocumentParser',
+        name: 'documentParser',
         icon: 'file:DocumentParser.svg',
         group: ['transform'],
         version: 1,
@@ -21,14 +21,14 @@ export class DocumentParser implements INodeType {
                 name: 'url',
                 type: 'string',
                 default: '',
-                description: 'Parser url',
+                description: 'Parser URL',
             },
             {
-                displayName: 'Id',
+                displayName: 'ID',
                 name: 'id',
                 type: 'string',
                 default: '',
-                description: 'Document id',
+                description: 'Document ID',
             },
             {
                 displayName: 'Name',
@@ -38,18 +38,18 @@ export class DocumentParser implements INodeType {
                 description: 'Document name',
             },
             {
-                displayName: 'Bucket name',
+                displayName: 'Bucket Name',
                 name: 'bucketName',
                 type: 'string',
                 default: '',
-                description: 'Bucket name',
+
             },
             {
-                displayName: 'Tenant code',
+                displayName: 'Tenant Code',
                 name: 'tenantCode',
                 type: 'string',
                 default: '',
-                description: 'Tenant code',
+
             },
         ],
     };
