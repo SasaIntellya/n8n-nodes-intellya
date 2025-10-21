@@ -2,16 +2,16 @@
 import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { OpenAIRequest, OpenAIResponse } from './Model/OpenAI';
 
-export class Vlm implements INodeType {
+export class VlmProcess implements INodeType {
     description: INodeTypeDescription = {
-        displayName: 'VLM',
-        name: 'vlm',
+        displayName: 'VlmProcess',
+        name: 'vlmProcess',
         icon: 'file:VLM.svg',
         group: ['transform'],
         version: 1,
-        description: 'VLM',
+        description: 'VlmProcess',
         defaults: {
-            name: 'VLM',
+            name: 'VlmProcess',
         },
         inputs: ['main'],
         outputs: ['main'],

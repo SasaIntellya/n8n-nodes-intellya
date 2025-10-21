@@ -43,7 +43,7 @@
       "dist/nodes/ConvertToPdf/ConvertToPdf.node.js",
       "dist/nodes/TextEmbedder/TextEmbedder.node.js",
       "dist/nodes/PdfToImages/PdfToImages.node.js",
-      "dist/nodes/VLM/VlmProcess.node.js"
+      "dist/nodes/VlmProcess/VlmProcess.node.js"
     ]
   },
   "devDependencies": {

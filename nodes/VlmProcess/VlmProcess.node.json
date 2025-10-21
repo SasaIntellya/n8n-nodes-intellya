@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-intellya.Vlm",
+	"node": "n8n-nodes-intellya.VlmProcess",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": [
