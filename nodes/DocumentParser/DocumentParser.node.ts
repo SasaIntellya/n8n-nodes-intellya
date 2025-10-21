@@ -81,7 +81,7 @@ export class DocumentParser implements INodeType {
 
         const returnData: INodeExecutionData[] = [];
         let data = await parse();
-        data?.forEach((d, i) => {
+        data?.forEach(d => {
             returnData.push({
                 json: d as any
             });
