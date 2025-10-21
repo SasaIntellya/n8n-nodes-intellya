@@ -1,5 +1,5 @@
 
-import { IExecuteFunctions, ILoadOptionsFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
+import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { EmbeddingRequest, EmbeddingResponse } from './Model/OpenAI';
 
 export class TextEmbedder implements INodeType {
