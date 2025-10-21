@@ -16,16 +16,16 @@ export class TextEmbedder implements INodeType {
         inputs: ['main'],
         outputs: ['main'],
         properties: [
-            {
-                displayName: 'Options',
-                name: 'options',
-                type: 'options',
-                typeOptions: {
-                    loadOptionsMethod: 'getOptions',
-                },
-                default: '',
-                description: 'Choose option from API',
-            },
+            // {
+            //     displayName: 'Options',
+            //     name: 'options',
+            //     type: 'options',
+            //     typeOptions: {
+            //         loadOptionsMethod: 'getOptions',
+            //     },
+            //     default: '',
+            //     description: 'Choose option from API',
+            // },
             {
                 displayName: 'Embedder type',
                 name: 'embedderType',
@@ -115,21 +115,21 @@ export class TextEmbedder implements INodeType {
         ],
     };
 
-    methods = {
-        loadOptions: {
-            async getOptions(this: ILoadOptionsFunctions) {
-                const response = await this.helpers.httpRequest({
-                    method: 'GET',
-                    url: 'http://172.26.130.19:5678/webhook-test/config',
-                    json: true,
-                });
-                return response.map((item: any) => ({
-                    name: item.name,
-                    value: item.value,
-                }));
-            },
-        },
-    };
+    // methods = {
+    //     loadOptions: {
+    //         async getOptions(this: ILoadOptionsFunctions) {
+    //             const response = await this.helpers.httpRequest({
+    //                 method: 'GET',
+    //                 url: 'http://172.26.130.19:5678/webhook-test/config',
+    //                 json: true,
+    //             });
+    //             return response.map((item: any) => ({
+    //                 name: item.name,
+    //                 value: item.value,
+    //             }));
+    //         },
+    //     },
+    // };
 
     async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
         // PRIVATE METHODS
