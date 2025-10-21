@@ -2,7 +2,7 @@
 import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { OpenAIRequest, OpenAIResponse } from './Model/OpenAI';
 
-export class VLM implements INodeType {
+export class Vlm implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'VLM',
         name: 'vlm',
