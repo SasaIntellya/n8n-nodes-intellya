@@ -76,6 +76,8 @@ export class CosineSimilarity implements INodeType {
             /
             ${this.getNodeParameter('index', 0) as string}
             /_search`;
+            console.log(url);
+            
             var body = {
                 size: 10,
                 query: {
