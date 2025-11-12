@@ -75,7 +75,7 @@ export class CosineSimilarity implements INodeType {
             ${this.getNodeParameter('baseUrl', 0) as string}
             /
             ${this.getNodeParameter('index', 0) as string}
-            /_search`;
+            /_search`.trim();
             console.log(url);
             
             var body = {
