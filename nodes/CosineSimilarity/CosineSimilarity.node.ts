@@ -47,6 +47,13 @@ export class CosineSimilarity implements INodeType {
                 description: 'Elastic index',
             },
             {
+                displayName: 'Paragraphs number',
+                name: 'paragraphsNumber',
+                type: 'number',
+                default: 10,
+                description: 'Number of paragraphs',
+            },
+            {
                 displayName: 'Channel ID',
                 name: 'channelId',
                 type: 'string',
