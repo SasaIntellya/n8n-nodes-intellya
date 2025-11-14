@@ -87,7 +87,7 @@ export class CosineSimilarity implements INodeType {
                             },
                             {
                                 term: {
-                                    'Channels.keyword': `*${this.getNodeParameter('channelId', 0) as string}*`
+                                    'Channels.keyword': `${this.getNodeParameter('channelId', 0) as string}`
                                 }
                             }
                         ],
