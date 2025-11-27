@@ -58,7 +58,7 @@ export class ConvertToPdf implements INodeType {
             const returnItem = {
                 json: {},
                 binary: {
-                    data: await this.helpers.prepareBinaryData(convertedFile, binaryData.fileName?.replace(/\.[^.]+$/, '.pdf')),
+                    file: await this.helpers.prepareBinaryData(convertedFile, binaryData.fileName?.replace(/\.[^.]+$/, '.pdf')),
                 },
             };
             returnData.push(returnItem);
