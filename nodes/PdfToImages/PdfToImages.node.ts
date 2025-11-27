@@ -36,7 +36,7 @@ export class PdfToImages implements INodeType {
 
         const inputData = this.getInputData()[0];
         const returnData: INodeExecutionData[] = [];
-        const binaryData = inputData?.binary!['data'];
+        const binaryData = inputData?.binary!['file'];
         if (binaryData) {
             const buffer = Buffer.from(binaryData.data, 'base64');
             let images = await pdfToImages(buffer);

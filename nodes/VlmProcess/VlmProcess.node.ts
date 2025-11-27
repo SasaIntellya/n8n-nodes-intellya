@@ -161,7 +161,7 @@ export class VlmProcess implements INodeType {
         const inputData = this.getInputData()[0];
         const returnData: INodeExecutionData[] = [];
         let embedderType = this.getNodeParameter('vlmType', 0) as string;
-        const image = inputData?.binary!['data'];
+        const image = inputData?.binary!['file'];
         if (embedderType == 'OpenAI') {
             let data = await openAIVLM(image?.data);
             returnData.push({

@@ -59,7 +59,7 @@ export class DocumentGenerator implements INodeType {
         // EXECUTE
 
         const input = this.getInputData()[0];
-        const template = input.binary!['data'];
+        const template = input.binary!['file'];
         const returnData: INodeExecutionData[] = [];
         let data = {} as IDataObject;
         Object.keys(input.json).forEach(k => {
@@ -68,7 +68,7 @@ export class DocumentGenerator implements INodeType {
             } else if (typeof input.json[k] == 'object') {
                 let objectData = input.json[k] as IDataObject;
                 if (objectData['fileType'] == 'image') {
-                    data[k] = `data:${objectData['mimeType']};base64,${objectData['data']}`
+                    data[k] = `data:${objectData['mimeType']};base64,${objectData['file']}`
                 }
             }
         });
