@@ -44,7 +44,7 @@ export class PdfToImages implements INodeType {
                 const returnItem = {
                     json: {},
                     binary: {
-                        data: await this.helpers.prepareBinaryData(img),
+                        file: await this.helpers.prepareBinaryData(img),
                     },
                 };
                 returnData.push(returnItem);
